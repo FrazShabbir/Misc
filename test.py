@@ -1,17 +1,28 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys                    #FORM ENABLEING KEY PRESSES
 from time import sleep
+from bs4 import BeautifulSoup
+import requests
 
 def gsearch():
     driver = webdriver.Chrome("/usr/local/share/chromedriver")
-    driver.get('https://www.google.com/')
-    sleep(2)
-    fname=driver.find_element_by_xpath('//*[@id="tsf"]/div[2]/div[1]/div[1]/div/div[2]/input')
-    fname.send_keys("Hazrat Muhammad SAW")
-    sleep(1)
-    next1=driver.find_element_by_xpath('//*[@id="tsf"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]')
-    next1.click()
-    driver.quit()
+    
 
-for x in range(1100):  
-    gsearch() 
+    what = input("Enter Job title:")
+    where = input("Enter destination:")
+    # fname=driver.find_element_by_xpath('//*[@id="text-input-what"]')
+    # fname.send_keys(what)
+
+    # fname=driver.find_element_by_xpath('//*[@id="text-input-where"]')
+    # fname.send_keys(where)
+
+    # next1=driver.find_element_by_xpath('//*[@id="whatWhereFormId"]/div[3]/button')
+    # next1.click()
+    link="https://pk.indeed.com/jobs?q="+what+"&l="+where
+    driver.get(link)
+    source = requests.get(link).text
+    soup = BeautifulSoup(source,'lxml')
+    
+    
+    
+gsearch()
