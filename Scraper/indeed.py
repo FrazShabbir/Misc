@@ -8,7 +8,6 @@ class indeedpk(scrapy.Spider):
     start_urls = [link]
 
     def parse(self, response):
-        #onebyone= response.css('h2.title>a::attr(href)')
         onebyone='https://pk.indeed.com/viewjob?cmp=Vaival-Technologies&t=Website+Quality+Assurance&jk=7440a52b7c6594a3&q=html&vjs=3'
         url_country= onebyone
         yield scrapy.Request(url_country,callback=self.parse_api)

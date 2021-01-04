@@ -9,9 +9,14 @@ class Indeed2(scrapy.Spider):
     start_urls = [link]
     
     def parse(self, response):
-        onebyone= response.css('h2.title>a::attr(href)').extract()
-        
-        yield {
-            'Country':onebyone,
-           
-        }
+        for i in range (1,10):
+            name = response.css('h2.title::text').get()
+            onebyone= response.css('h2.title>a::attr(href)').get()
+            baserul='https://pk.indeed.com'
+            url_country=baserul+onebyone
+            job=response.css('div#vjs-desc>ul>li::text').getall()
+            yield {
+                'Country':job,
+                'name':name
+            
+            }
