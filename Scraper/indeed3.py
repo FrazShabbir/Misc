@@ -14,6 +14,7 @@ class indeedpk(scrapy.Spider):
             onebyone= link.css('h2.title>a::attr(href)').get()
             baserul='https://pk.indeed.com'
             url_country=baserul+onebyone
+            
             yield scrapy.Request(url_country,callback=self.parse_api)
 
 
@@ -26,7 +27,8 @@ class indeedpk(scrapy.Spider):
 
         yield {
             'name':name,
-                'job':job,'job3':job3,
-                'job2':job2,
+                'Job title':job,
+                'Requirements':job3,
+                'Text':job2,
                 
                 }

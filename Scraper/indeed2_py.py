@@ -13,7 +13,7 @@ class Indeed2(scrapy.Spider):
             name = response.css('h2.title::text').get()
             onebyone= response.css('h2.title>a::attr(href)').get()
             baserul='https://pk.indeed.com'
-            url_country=baserul+onebyone
+            url_country=baserul+onebyone[]
             job=response.css('div#vjs-desc>ul>li::text').getall()
             yield {
                 'Country':job,
