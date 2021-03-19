@@ -25,4 +25,6 @@ y2 = int(.5 * img1.size[1]) + int(.5 * img.size[1])
 img1.paste(img, box=(x1, y1, x2, y2), mask=img)
 
 # converting the final image into its original color mode, and then saving it
+# converting the final image into its original color mode, and then saving it
 img1.convert(img1.mode).save("Destination_path")
+
