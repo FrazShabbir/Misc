@@ -31,3 +31,5 @@ img1.convert(img1.mode).save("Destination_path")
 
 
 
+
+
